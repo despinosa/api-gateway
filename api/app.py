@@ -1,16 +1,15 @@
-import celery.states as states
-from flask import Flask, Response
-from flask import url_for, jsonify
+import flask
+from celery import states
 from worker import celery
 
 dev_mode = True
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
 @app.route('/add/<int:param1>/<int:param2>')
 def add(param1: int, param2: int) -> str:
     task = celery.send_task('tasks.add', args=[param1, param2], kwargs={})
-    response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'>check status of {task.id} </a>"
+    response = f"<a href='{flask.url_for('check_task', task_id=task.id, external=True)}'>check status of {task.id} </a>"
     return response
 
 
@@ -24,8 +23,8 @@ def check_task(task_id: str) -> str:
 
 
 @app.route('/health_check')
-def health_check() -> Response:
-    return jsonify("OK")
+def health_check() -> flask.Response:
+    return flask.jsonify("OK")
 
 
 if __name__ == '__main__':
