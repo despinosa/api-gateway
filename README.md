@@ -1,6 +1,6 @@
 # API Gateway
 
-A proof of concept implementation of a scalable API gateway with rate limiting capabilities. Leverages [Docker Compose](https://docs.docker.com/compose/) for orchestrating a [Flask](http://flask.pocoo.org/) API server application & a [Celery](http://www.celeryproject.org/) task executor with [Redis](https://redis.io/) as its results data store and a [RabbitMQ]() message queue for communication beween API server and task executor nodes.
+A proof of concept implementation of a scalable API gateway with rate limiting capabilities. Leverages [Docker Compose](https://docs.docker.com/compose/) for orchestrating a [Flask](http://flask.pocoo.org/) API server application & a [Celery](http://www.celeryproject.org/) task executor with [Redis](https://redis.io/) as its results data store and a [RabbitMQ](https://www.rabbitmq.com/) message queue for communication beween API server and task executor nodes.
 
 ### Installation
 
