@@ -1,6 +1,6 @@
 # API Gateway
 
-A proof of concept implementation of a scalable API gateway with rate limiting capabilities. Leverages [Docker Compose](https://docs.docker.com/compose/) for orchestrating a [Flask](http://flask.pocoo.org/) API server application & a [Celery](http://www.celeryproject.org/) task executor with [Redis](https://redis.io/) as its results data store and a [RabbitMQ](https://www.rabbitmq.com/) message queue for communication beween API server and task executor nodes.
+A proof of concept implementation of a scalable API gateway with rate limiting capabilities. Leverages [Docker Compose](https://docs.docker.com/compose/) for orchestrating a [Flask](http://flask.pocoo.org/) API server application a [Celery](http://www.celeryproject.org/) task executor with [Redis](https://redis.io/) as its results data store and a [RabbitMQ](https://www.rabbitmq.com/) message queue for communication beween API server and task executor nodes.
 
 ### Installation
 
@@ -28,9 +28,9 @@ docker-compose down
 ```
 
 
-To change the endpoints, update the code in [api/app.py](api/app.py)
+To view the minion endpoint code, see module [api/app.py](api/app.py). It also contains the callback for broadcasted messages from the master task executor node to minion API server nodes.
 
-Task changes should happen in [celery-queue/tasks.py](celery-queue/tasks.py) 
+The code for the master task executor resides in the [celery-queue/tasks.py](celery-queue/tasks.py) module.
 
 ---
 
