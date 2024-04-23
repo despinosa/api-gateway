@@ -1,11 +1,11 @@
-# Docker Flask Celery Redis
+# API Gateway
 
-A basic [Docker Compose](https://docs.docker.com/compose/) template for orchestrating a [Flask](http://flask.pocoo.org/) application & a [Celery](http://www.celeryproject.org/) queue with [Redis](https://redis.io/)
+A proof of concept implementation of a scalable API gateway with rate limiting capabilities. Leverages [Docker Compose](https://docs.docker.com/compose/) for orchestrating a [Flask](http://flask.pocoo.org/) API server application & a [Celery](http://www.celeryproject.org/) task executor with [Redis](https://redis.io/) as its results data store and a [RabbitMQ]() message queue for communication beween API server and task executor nodes.
 
 ### Installation
 
 ```bash
-git clone https://github.com/mattkohl/docker-flask-celery-redis
+git clone https://github.com/despinosa/api-gateway
 ```
 
 ### Build & Launch
@@ -14,13 +14,7 @@ git clone https://github.com/mattkohl/docker-flask-celery-redis
 docker-compose up -d --build
 ```
 
-### Enable hot code reload
-
-```
-docker-compose -f docker-compose.yml -f docker-compose.development.yml up --build
-```
-
-This will expose the Flask application's endpoints on port `5001` as well as a [Flower](https://github.com/mher/flower) server for monitoring workers on port `5555`
+This will expose the Flask application's endpoints on port `5001`.
 
 To add more workers:
 ```bash
@@ -40,4 +34,4 @@ Task changes should happen in [celery-queue/tasks.py](celery-queue/tasks.py)
 
 ---
 
-adapted from [https://github.com/itsrifat/flask-celery-docker-scale](https://github.com/itsrifat/flask-celery-docker-scale)
+adapted from [https://github.com/mattkohl/docker-flask-celery-redis](https://github.com/mattkohl/docker-flask-celery-redis)
